@@ -76,6 +76,7 @@ $db->clear();
             </div>
             <div class="box-body">
               <div id="donut-chart" style="height: 300px;"></div>
+              <p>Jumlah Tweet : <?= $total ?></p>
             </div>
             <!-- /.box-body-->
           </div>
@@ -94,6 +95,7 @@ $db->clear();
                 </div>
                 <div class="box-body">
                     <div id="bar-chart" style="height: 300px;"></div>
+                    <p>Jumlah Tweet : <?= $total ?></p>
                 </div>
                 <!-- /.box-body-->
             </div>

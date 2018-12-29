@@ -99,7 +99,7 @@ $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
                   <th>Label</th>
                   <th>Kunci</th>
                 </tr>
-                <?php foreach($db->tweets->paginate(15, $page,['tgl_ambil' => 'DESC']) as $tweet):  ?>
+                <?php foreach($db->tweets->paginate(15, $page,['id' => 'DESC']) as $tweet):  ?>
                     <tr>
                         <td><?= $tweet['id_tweet'] ?></td>
                         <td><?= $tweet['text_dirty'] ?></td>

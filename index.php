@@ -1,6 +1,9 @@
 <?php
 include 'view/header.php';
 if(isset($_POST['submit'])){
+    $ok = 0;
+    $tidakOk = 0;
+    $notIn = 0;
     $search = $_POST['key'];
     
     $results = $twitter->search(['count' => 30, 'q' => urlencode($search), "
@@ -14,16 +17,35 @@ if(isset($_POST['submit'])){
         $text_clean = $text_clean->toString();
         
         //stem
-        $string   = $stemmer->stem($string);
-
+        $text_stem   = $stemmer->stem($text_clean);
+        if(empty($text_stem)){
+            $notIn++;
+            break;
+        }
         // calculations:
-        $scores = $sentiment->score($string);
-        $class = $sentiment->categorise($string);
-        // TODO: : cek sudah ada id di database, insert ke database
+        $scores = $sentiment->score($text_stem);
+        $class = $sentiment->categorise($text_stem);
+        
+        if($db->query("SELECT id FROM tweets WHERE id_tweet = '$tweet->id'")->count() == 0){
+            $data = [
+                "id_tweet" => $tweet->id,
+                "text_dirty" => $string,
+                "text_clean" => $text_clean,
+                "text_steam" => $text_stem,
+                "label" => $class,
+                "hastag" => $search
+            ];
+            
+            if($db->insert("tweets", $data)){
+                $ok++;
+            }
+        }else{
+            $tidakOk++;
+        }
     }
 }
 
-$page = (isset($_POST['page'])) ? $_POST['page'] : 1;
+$page = (isset($_GET['page'])) ? $_GET['page'] : 1;
 
 ?>
 
@@ -36,6 +58,9 @@ $page = (isset($_POST['page'])) ? $_POST['page'] : 1;
       <div class="row">
 
           <div class="col-md-12">
+            <?php if(isset($search)): ?>
+              <div class="alert alert-success"> <?= $ok ?> Tweet baru dimasukan, <?= $tidakOk ?> sudah ada , <?= $notIn ?> kosong </div>
+            <?php endif;?>
             <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">Ambil Data</h3>
@@ -74,13 +99,21 @@ $page = (isset($_POST['page'])) ? $_POST['page'] : 1;
                   <th>Label</th>
                   <th>Kunci</th>
                 </tr>
-                <?php foreach($db->tweets->paginate(15, $page) as $tweet):  ?>
+                <?php foreach($db->tweets->paginate(15, $page,['tgl_ambil' => 'DESC']) as $tweet):  ?>
                     <tr>
                         <td><?= $tweet['id_tweet'] ?></td>
                         <td><?= $tweet['text_dirty'] ?></td>
                         <td><?= $tweet['text_clean'] ?></td>
                         <td><?= $tweet['text_steam'] ?></td>
-                        <td><?= $tweet['label'] ?></td>
+                        <td> <span class="label label-<?php
+                            if($tweet['label'] == 'positif'){
+                                echo 'success';
+                            }elseif($tweet['label'] == 'negatif'){
+                                echo 'danger';
+                            }elseif($tweet['label'] == 'netral'){
+                                echo 'info';
+                            }
+                        ?>"><?= $tweet['label'] ?></span> </td>
                         <td><?= $tweet['hastag'] ?></td>
                     </tr>
                 <?php endforeach;?>

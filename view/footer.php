@@ -18,8 +18,14 @@
 <!-- AdminLTE App -->
 <script src="assets/dist/js/adminlte.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+<!-- FLOT CHARTS -->
+<script src="assets/bower_components/Flot/jquery.flot.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="assets/bower_components/Flot/jquery.flot.resize.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="assets/bower_components/Flot/jquery.flot.pie.js"></script>
+<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
+<script src="assets/bower_components/Flot/jquery.flot.categories.js"></script>
+<?= js(); ?>
 </body>
 </html>

@@ -11,4 +11,4 @@ how to run :
 3. create and import database sentiment.sql 
 4. configure env file to configure database connection
 
-nb: if something didn't work maybe something not support or not update anymore, please be fix by your self
+nb: if something didn't work maybe something not support or not update anymore, please fix it by yourself

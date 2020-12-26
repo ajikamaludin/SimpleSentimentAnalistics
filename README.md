@@ -7,7 +7,7 @@ aplikasi ini didukung dengan menggukaan librari :
 
 how to run :
 1. copy .env.example to env
-2. install depedencies with compose `compose install`
+2. install depedencies with composer `composer install`
 3. create and import database sentiment.sql 
 4. configure env file to configure database connection
 

@@ -6,7 +6,7 @@ Aplikasi melakukan curl / pengambilan data twit melalui api twitter search / pen
 
 ![SS Aplikasi](https://raw.githubusercontent.com/ajikamaludin/SimpleSentimentAnalistics/2c9f2a81aad2d03eabe9182f98fb072add765965/1.png)
 
-status: work, last test 25/07/2021
+status: work, last test 11/10/2021
 
 aplikasi ini didukung dengan menggukaan library/pustaka :
 1. PHP dg/Twitter-php https://github.com/dg/twitter-php

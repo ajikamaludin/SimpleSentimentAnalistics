@@ -4,7 +4,10 @@
 Cara Kerja :
 Aplikasi melakukan curl / pengambilan data twit melalui api twitter search / pencarian sesuai dengan keyword / hastag yang anda masukan melalui antar muka aplikasi kemudian hasil twit diklasifikasi merupakan cuitan bersentimen negatif atau positif
 
+pengambilan data :
 ![SS Aplikasi](https://raw.githubusercontent.com/ajikamaludin/SimpleSentimentAnalistics/2c9f2a81aad2d03eabe9182f98fb072add765965/1.png)
+analisis sentimen :
+![SS Aplikasi 2](https://raw.githubusercontent.com/ajikamaludin/SimpleSentimentAnalistics/master/2.png)
 
 status: work, last test 11/10/2021
 

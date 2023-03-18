@@ -9,6 +9,10 @@ pengambilan data :
 analisis sentimen :
 ![SS Aplikasi 2](https://raw.githubusercontent.com/ajikamaludin/SimpleSentimentAnalistics/master/2.png)
 
+### Support me
+
+<a href="https://trakteer.id/ajikamaludin" target="_blank"><img id="wse-buttons-preview" src="https://cdn.trakteer.id/images/embed/trbtn-blue-2.png" height="40" style="border:0px;height:40px;" alt="Trakteer Saya"></a>
+
 status: work, last test 11/10/2021
 
 aplikasi ini didukung dengan menggukaan library/pustaka :
